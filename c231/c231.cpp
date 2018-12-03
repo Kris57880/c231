@@ -1,6 +1,6 @@
 // c231.cpp : Defines the entry point for the console application.
 //https://zerojudge.tw/ShowProblem?problemid=c231
-
+//test
 #include "stdafx.h"
 #pragma warning (default:4996)
 
@@ -35,21 +35,21 @@ int main() {
 			scanf("%d %d", &(tmp.x), &(tmp.y));
 			mine.push_back(tmp);
 		}
-		mine.sort(cmp);         //¦a¹p¨Ì·Óx¥Ñ¤p¨ì¤j¡A¦A¨Ì·Óy¥Ñ¤p¨ì¤j
+		mine.sort(cmp);         //åœ°é›·ä¾ç…§xç”±å°åˆ°å¤§ï¼Œå†ä¾ç…§yç”±å°åˆ°å¤§
 		while (mine.size() > 0) {
-			qu.push_back(mine.front());  //±qmine¨ú¥X©ñ¨ìqu¡Aquªí¥Ü¥Ø«e¥i¥H¤ŞÃzªº¦a¹p
-			mine.pop_front();   //mine§R°£­è­è¨ú¥X©ñ¨ìquªº¦a¹p¡AÁ×§K­«½Æ­pºâ
-			while (qu.size() > 0) {    //¥i¥H³sÂê¤ÏÀ³ªº¦a¹p©ñ¨ìqu
-				tmp = qu.front();   //¨ú¥X±qqu¨ú¥X²Ä¤@­Ó©ñ¨ìtmp
-				qu.pop_front();    //qu§R°£²Ä¤@­Ó¤¸¯À
-				for (list<Node>::iterator it = mine.begin(); it != mine.end();) {  //°j°é¤¤§R°£it++¡A¥Ñ²Ä43»P45¦æ³B²z
-					if (((*it).x - tmp.x) > 2) break;   //¦]¬°mine¨Ì·Óx¥Ñ¤p¨ì¤j±Æ§Ç¡Ax®y¼Ğ®t¶W¹L2´N¤¤Â_°j°é
-					if (rel(tmp, *it)) {  //§PÂ_tmp»P*it¬O§_¬O³sÂê¦a¹p
-						qu.push_back(*it);   //­Y¬O³sÂê¦a¹p¥[¤Jqu
-						it = mine.erase(it);   //±qmine§R°£it¡A·|¦Û°Ê¦^¶Ç§R°£¤¸¯Àªº¤U¤@­Ó¤¸¯À¦ì§}¨ìit¡A©Ò¥H¤£¥Îit++
+			qu.push_back(mine.front());  //å¾mineå–å‡ºæ”¾åˆ°quï¼Œquè¡¨ç¤ºç›®å‰å¯ä»¥å¼•çˆ†çš„åœ°é›·
+			mine.pop_front();   //mineåˆªé™¤å‰›å‰›å–å‡ºæ”¾åˆ°quçš„åœ°é›·ï¼Œé¿å…é‡è¤‡è¨ˆç®—
+			while (qu.size() > 0) {    //å¯ä»¥é€£é–åæ‡‰çš„åœ°é›·æ”¾åˆ°qu
+				tmp = qu.front();   //å–å‡ºå¾quå–å‡ºç¬¬ä¸€å€‹æ”¾åˆ°tmp
+				qu.pop_front();    //quåˆªé™¤ç¬¬ä¸€å€‹å…ƒç´ 
+				for (list<Node>::iterator it = mine.begin(); it != mine.end();) {  //è¿´åœˆä¸­åˆªé™¤it++ï¼Œç”±ç¬¬43èˆ‡45è¡Œè™•ç†
+					if (((*it).x - tmp.x) > 2) break;   //å› ç‚ºmineä¾ç…§xç”±å°åˆ°å¤§æ’åºï¼Œxåº§æ¨™å·®è¶…é2å°±ä¸­æ–·è¿´åœˆ
+					if (rel(tmp, *it)) {  //åˆ¤æ–·tmpèˆ‡*itæ˜¯å¦æ˜¯é€£é–åœ°é›·
+						qu.push_back(*it);   //è‹¥æ˜¯é€£é–åœ°é›·åŠ å…¥qu
+						it = mine.erase(it);   //å¾mineåˆªé™¤itï¼Œæœƒè‡ªå‹•å›å‚³åˆªé™¤å…ƒç´ çš„ä¸‹ä¸€å€‹å…ƒç´ ä½å€åˆ°itï¼Œæ‰€ä»¥ä¸ç”¨it++
 					}
 					else {
-						it++;     //§ä¤U¤@­Ó
+						it++;     //æ‰¾ä¸‹ä¸€å€‹
 					}
 				}
 			}
