@@ -11,8 +11,8 @@ int cmp(pair<int,int>&a,pair<int,int>&b){
 	else	return a.first>b.first;
 }
 int rel(pair<int,int> tmp,pair<int,int> bomb){
-	if(tmp.first-bomb.first<=2||tmp.first-bomb.first>=-2){
-		if(tmp.second-bomb.second<=2||tmp.second-bomb.second>=-2)
+	if(tmp.first-bomb.first<=2&&tmp.first-bomb.first>=-2){
+		if(tmp.second-bomb.second<=2&&tmp.second-bomb.second>=-2)
 			return true	;
 	}else	return false;
 }
@@ -20,15 +20,21 @@ int rel(pair<int,int> tmp,pair<int,int> bomb){
 {
 	list< pair<int,int> > Bomb_Address;
 	int a,b,c;
-	while(scanf("%d,%d,%d",&a,&b,&c)!=EOF){
-		int x,y;
-		for(int i=1;i<=c;i++){
-			scanf("%d,%d",&x,&y);
-			Bomb_Address.push_back(make_pair(x,y));
+	while(/*scanf("%d,%d,%d",&a,&b,&c)!=EOF*/cin>>a>>b>>c){
+		int i,x,y;
+		for(i=1;i<=c;i++){
+			cin>>x>>y;
+			//scanf("%d,%d",&x,&y);
+			pair<int,int> tmp(x,y);
+			Bomb_Address.push_back(tmp);
 		}
 		Bomb_Address.sort(cmp);
+		/*
+		for(list<pair<int,int> >::iterator it=Bomb_Address.begin();it!=Bomb_Address.end();it++)
+			cout<<it->first<<it->second;
+		*/
 		int used=0;
-		while(Bomb_Address.size() >0){
+		while(Bomb_Address.empty()==false){
 			deque<pair<int,int> >BombChain;
 			BombChain.push_front(Bomb_Address.front() );
 			Bomb_Address.pop_front(); 
@@ -38,14 +44,15 @@ int rel(pair<int,int> tmp,pair<int,int> bomb){
 				for	(list<pair<int,int> >::iterator it=Bomb_Address.begin();it!=Bomb_Address.end();){
 					if(rel(tmp,*it)){
 						BombChain.push_back(*it);
-						Bomb_Address.remove(*it);
+						Bomb_Address.erase(it);
 					}
 					else it++;
 				}	
 			}
 			used++;
 		}
-		printf("%d\n",used);
+		//printf("%d\n",used);
+		cout<<used<<"\n";
    }
    return 0;
 }
