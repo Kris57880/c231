@@ -18,6 +18,26 @@ int rel(pair<int,int> tmp,pair<int,int> bomb){
 }
  int main()
 {
+	//231 
+#include<iostream>
+#include<cstdio>
+#include<utility>
+#include<list>
+#include<deque> 
+#include<algorithm>
+using namespace std;
+int cmp(pair<int,int>&a,pair<int,int>&b){
+	if(a.first==b.first)	return a.second>b.second;
+	else	return a.first>b.first;
+}
+int rel(pair<int,int> tmp,pair<int,int> bomb){
+	if(tmp.first-bomb.first<=2&&tmp.first-bomb.first>=-2){
+		if(tmp.second-bomb.second<=2&&tmp.second-bomb.second>=-2)
+			return true	;
+	}else	return false;
+}
+ int main()
+{
 	list< pair<int,int> > Bomb_Address;
 	int a,b,c;
 	while(/*scanf("%d,%d,%d",&a,&b,&c)!=EOF*/cin>>a>>b>>c){
@@ -46,13 +66,15 @@ int rel(pair<int,int> tmp,pair<int,int> bomb){
 						BombChain.push_back(*it);
 						Bomb_Address.erase(it);
 					}
-					else it++;
+					else 
+						it++;
 				}	
 			}
 			used++;
 		}
 		//printf("%d\n",used);
 		cout<<used<<"\n";
-   }
+		Bomb_Address.clear();
+		   }
    return 0;
 }
