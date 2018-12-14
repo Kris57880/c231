@@ -1,4 +1,3 @@
-//231 
 #include<iostream>
 #include<cstdio>
 #include<utility>
@@ -42,9 +41,10 @@ int rel(pair<int,int> tmp,pair<int,int> bomb){
 				pair<int,int>tmp=BombChain.front();
 				BombChain.pop_front();
 				for	(list<pair<int,int> >::iterator it=Bomb_Address.begin();it!=Bomb_Address.end();){
+					if((*it).first-tmp.first>2) break;
 					if(rel(tmp,*it)){
 						BombChain.push_back(*it);
-						Bomb_Address.erase(it);
+						it=Bomb_Address.erase(it);
 					}
 					else 
 						it++;
